@@ -1,4 +1,3 @@
-=========
 benchmark
 =========
 
@@ -78,10 +77,11 @@ which produces::
 More examples are available in the example folder
 
 
+Authors
+----
 `benchmark` was written by Jeffrey R. Spies and various contributors:
 It is currently maintained by Gustav Bylund
-Development Lead
-----------------
+
 
 - Gustav Bylund <maistho@gmail.com>
 - Jeffrey R. Spies <jspies@gmail.com>
