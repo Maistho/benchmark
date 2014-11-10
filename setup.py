@@ -10,7 +10,7 @@ setup(
     author='Jeffrey R. Spies',
     author_email='jspies@gmail.com',
     description='Python benchmarker / benchmarking framework',
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
     packages=['benchmark'],
     include_package_data=True,
     zip_safe=False,
