@@ -118,7 +118,9 @@ class Benchmark(object):
             row['total'] = self.results[key]['total']
             row['bestCase'] = self.results[key]['bestCase']
             row['worstCase'] = self.results[key]['worstCase']
-            row['stability'] = self.results[key]['worstCase'] - self.results[key]['bestCase']
+            row['stability'] = "{0:.0f}%".format(
+                    self.results[key]['bestCase']
+                    / self.results[key]['worstCase'] * 100)
             row['sumOfSquares'] = self.results[key]['sumOfSq']
             if row['runs'] > 1:
                 row['var'] = (row['sumOfSquares']-pow(row['total'], 2)/row['runs'])/(row['runs']-1)
