@@ -54,6 +54,13 @@ class Benchmark(object):
         tTime = self.__timer()-tick
         self.results[name]['total'] += tTime
         self.results[name]['sumOfSq'] += pow(tTime, 2)
+
+        if tTime > self.results[name]['worstCase']:
+            self.results[name]['worstCase'] = tTime
+
+        if tTime < self.results[name]['bestCase']:
+            self.results[name]['bestCase'] = tTime
+
         return tTime, tResult
 
     def __runFn(self, name):
@@ -73,7 +80,8 @@ class Benchmark(object):
 
         self.results = {}
         for number, testname in enumerate(tests):
-            self.results[testname] = {'total':0, 'sumOfSq':0}
+            self.results[testname] = {'total':0, 'sumOfSq':0,
+                    'worstCase':0, 'bestCase':9999999}
             testQueue.extend([number for i in range(0, self.__n)])
 
         random.shuffle(testQueue)
@@ -108,6 +116,9 @@ class Benchmark(object):
             row['runs'] = self.__n
             row['mean'] = self.results[key]['total']/row['runs']
             row['total'] = self.results[key]['total']
+            row['bestCase'] = self.results[key]['bestCase']
+            row['worstCase'] = self.results[key]['worstCase']
+            row['stability'] = self.results[key]['worstCase'] - self.results[key]['bestCase']
             row['sumOfSquares'] = self.results[key]['sumOfSq']
             if row['runs'] > 1:
                 row['var'] = (row['sumOfSquares']-pow(row['total'], 2)/row['runs'])/(row['runs']-1)
@@ -116,6 +127,7 @@ class Benchmark(object):
                 row['var'] = 'NA'
                 row['sd'] = 'NA'
             self.table.append(row)
+
 
         self.table = sorted(self.table, key=operator.itemgetter('mean'))
         for i, v in enumerate(self.table):
@@ -165,7 +177,8 @@ class Benchmark(object):
         return sizes
 
     def getTable(self, format="markdown", sort_by="mean",
-        order=['name', 'rank', 'runs', 'mean', 'sd', 'timesBaseline'],
+        order=['name', 'rank', 'runs', 'mean', 'sd', 'timesBaseline',
+        'worstCase', 'bestCase', 'stability'],
         header=None,
         formats=None,
         numberFormat = "%.4g",
