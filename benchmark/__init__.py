@@ -7,8 +7,8 @@ __maintainer__ = "Jeffrey R. Spies"
 __email__ = "jspies@gmail.com"
 __status__ = "Beta"
 
-from main import BenchmarkProgram, main
-from Benchmark import Benchmark
+from .main import BenchmarkProgram, main
+from .Benchmark import Benchmark
 
 
 
