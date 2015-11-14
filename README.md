@@ -18,15 +18,15 @@ benchmark
             self.size = 25000
 
         def test_pow_operator(self):
-            for i in xrange(self.size):
+            for i in range(self.size):
                 z = i**.5
 
         def test_pow_function(self):
-            for i in xrange(self.size):
+            for i in range(self.size):
                 z = pow(i, .5)
 
         def test_sqrt_function(self):
-            for i in xrange(self.size):
+            for i in range(self.size):
                 z = math.sqrt(i)
 
     class Benchmark_Sqrt2(Benchmark_Sqrt):
