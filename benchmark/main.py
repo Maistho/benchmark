@@ -9,12 +9,13 @@ import time
 import platform
 import os
 import sys
+import importlib
 
 class BenchmarkProgram(object):
 
     def __init__(self, module="__main__", **kwargs):
         if isinstance(module, str):
-            self.module = __import__(module)
+            self.module = importlib.import_module(module)
 
         benchmarks = self.loadFromModule(self.module)
 
