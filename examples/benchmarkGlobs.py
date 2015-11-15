@@ -15,7 +15,7 @@ class BenchmarkGlobs(benchmark.Benchmark):
     
     def setUp(self):
         self.walk_root = tempfile.gettempdir()
-        for i in xrange(0, 100):
+        for i in range(0, 100):
             tempfile.mkstemp(suffix=".txt")
     
     def test_glob(self):

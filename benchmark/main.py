@@ -3,7 +3,7 @@
 # Website: http://jspi.es/benchmark
 
 from . import __VERSION__
-from Benchmark import Benchmark
+from .Benchmark import Benchmark
 
 import time
 import platform
@@ -13,7 +13,7 @@ import sys
 class BenchmarkProgram(object):
 
     def __init__(self, module="__main__", **kwargs):
-        if isinstance(module, basestring):
+        if isinstance(module, str):
             self.module = __import__(module)
 
         benchmarks = self.loadFromModule(self.module)

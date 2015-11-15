@@ -21,28 +21,28 @@ class SortDictByValue(benchmark.Benchmark):
         random.shuffle(self.d)
     
     def test_pep265(self):
-        return sorted(self.d.iteritems(), key=itemgetter(1))
+        return sorted(self.d.items(), key=itemgetter(1))
     
     def test_stupid(self):
-        return [(k,v) for v,k in sorted([(v,k) for k,v in self.d.iteritems()])]
+        return [(k,v) for v,k in sorted([(v,k) for k,v in self.d.items()])]
     
     def test_listExpansion(self):
-        L = [(k,v) for (k,v) in self.d.iteritems()]
+        L = [(k,v) for (k,v) in self.d.items()]
         return sorted(L, key=lambda x: x[1])
     
     def test_generator(self):
-        L = ((k,v) for (k,v) in self.d.iteritems())
+        L = ((k,v) for (k,v) in self.d.items())
         return sorted(L, key=lambda x: x[1])
     
     def test_lambda(self):
-        return sorted(self.d.iteritems(), key=lambda x: x[1])
+        return sorted(self.d.items(), key=lambda x: x[1])
     
     def test_formalFnInner(self):
         def fninner(x):return x[1]
-        return sorted(self.d.iteritems(), key=fninner)
+        return sorted(self.d.items(), key=fninner)
     
     def test_formalFnOuter(self):
-        return sorted(self.d.iteritems(), key=fnouter)
+        return sorted(self.d.items(), key=fnouter)
 
 class SortLargerDictByValue(SortDictByValue):
     
