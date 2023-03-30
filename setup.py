@@ -8,7 +8,6 @@ setup(
     url='http://jspi.es/benchmark',
     license='LICENSE.txt',
     author='Jeffrey R. Spies',
-    author_email='jspies@gmail.com',
     description='Python benchmarker / benchmarking framework',
     long_description=open('README.md').read(),
     packages=['benchmark'],
